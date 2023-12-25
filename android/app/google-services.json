@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1084846411191",
+    "project_id": "laporbook-d8290",
+    "storage_bucket": "laporbook-d8290.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084846411191:android:70a710d06e6bcbcd3eac32",
+        "android_client_info": {
+          "package_name": "com.example.lapor_book_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN-541Bsz4sJdo5btju7kb1J8EixFaiBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
