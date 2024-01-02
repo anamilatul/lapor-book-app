@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../components/styles.dart';
 import '../models/akun.dart';
+import 'AllLaporan.dart';
+import 'MyLaporan.dart';
 import 'ProfilePage.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -89,10 +91,8 @@ class _DashboardFull extends State<DashboardFull> {
   @override
   Widget build(BuildContext context) {
     pages = <Widget>[
-      const SizedBox(),
-      const SizedBox(),
-      // AllLaporan(akun: akun),
-      // MyLaporan(akun: akun),
+      AllLaporan(akun: akun),
+      MyLaporan(akun: akun),
       Profile(akun: akun),
     ];
 
@@ -100,7 +100,15 @@ class _DashboardFull extends State<DashboardFull> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         child: const Icon(Icons.add, size: 35),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            '/add',
+            arguments: {
+              'akun': akun,
+            },
+          );
+        },
       ),
       appBar: AppBar(
         backgroundColor: primaryColor,
@@ -108,6 +116,7 @@ class _DashboardFull extends State<DashboardFull> {
           'Lapor Book',
           style: headerStyle(level: 2, dark: false),
         ),
+        automaticallyImplyLeading: false,
         centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(
