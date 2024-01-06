@@ -54,27 +54,28 @@ class _ListItemState extends State<ListItem> {
         onLongPress: () {
           if (widget.isLaporanku) {
             showDialog(
-                context: context,
-                builder: (BuildContext buildContext) {
-                  return AlertDialog(
-                    title: Text('Hapus ${widget.laporan.judul} ?'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(buildContext);
-                        },
-                        child: const Text('Batal'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          deleteLaporan();
-                          Navigator.pop(buildContext);
-                        },
-                        child: const Text('Hapus'),
-                      ),
-                    ],
-                  );
-                });
+              context: context,
+              builder: (BuildContext buildContext) {
+                return AlertDialog(
+                  title: Text('Hapus ${widget.laporan.judul} ?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(buildContext);
+                      },
+                      child: const Text('Batal'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        deleteLaporan();
+                        Navigator.pop(buildContext);
+                      },
+                      child: const Text('Hapus'),
+                    ),
+                  ],
+                );
+              },
+            );
           }
         },
         child: Column(
@@ -143,12 +144,16 @@ class _ListItemState extends State<ListItem> {
                       ),
                     ),
                     alignment: Alignment.center,
+                    // child: Text(
+                    //   DateFormat('dd/MM/yyyy').format(widget.laporan.tanggal),
+                    //   style: headerStyle(
+                    //     level: 5,
+                    //     dark: false,
+                    //   ),
+                    // ),
                     child: Text(
-                      DateFormat('dd/MM/yyyy').format(widget.laporan.tanggal),
-                      style: headerStyle(
-                        level: 5,
-                        dark: false,
-                      ),
+                      "${widget.laporan.likes}",
+                      style: TextStyle(fontSize: 8),
                     ),
                   ),
                 ),

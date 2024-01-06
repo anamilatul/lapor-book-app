@@ -6,11 +6,14 @@ class Laporan {
   final String instansi;
   String? deskripsi;
   String? gambar;
+
   final String nama;
   final String status;
   final DateTime tanggal;
   final String maps;
   List<Komentar>? komentar;
+  int? likes;
+  List<String>? likedBy;
 
   Laporan({
     required this.uid,
@@ -24,6 +27,8 @@ class Laporan {
     required this.tanggal,
     required this.maps,
     this.komentar,
+    this.likes,
+    this.likedBy,
   });
 }
 
