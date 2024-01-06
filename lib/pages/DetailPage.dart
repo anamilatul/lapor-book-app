@@ -41,8 +41,8 @@ class _DetailPageState extends State<DetailPage> {
         _isLiked = likedBy.contains(akun.uid);
       });
     } catch (e) {
-      final snackbar = SnackBar(content: Text(e.toString()));
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      // final snackbar = SnackBar(content: Text(e.toString()));
+      // ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }
 
@@ -79,6 +79,7 @@ class _DetailPageState extends State<DetailPage> {
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final Akun akun = arguments['akun'];
     final Laporan laporan = arguments['laporan'];
+    _fetchLikeData(laporan, akun);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
@@ -145,23 +146,32 @@ class _DetailPageState extends State<DetailPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Jumlah Like : ${_likeCount}"),
-                  Container(
-                    width: 100,
-                    child: ElevatedButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Color.fromARGB(255, 215, 180, 65),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      onPressed: () {
-                        _likes(laporan, akun);
-                      },
-                      child: _isLiked ? Text("Liked") : Text("Like"),
-                    ),
+                  Text(
+                    "Jumlah Like : $_likeCount",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: primaryColor,
+                        fontWeight: FontWeight.bold),
                   ),
+                  _isLiked
+                      ? Container()
+                      : Container(
+                          width: 100,
+                          child: ElevatedButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor:
+                                  Color.fromARGB(255, 215, 180, 65),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                            ),
+                            onPressed: () {
+                              _likes(laporan, akun);
+                            },
+                            child: Icon(Icons.thumb_up_alt),
+                          ),
+                        ),
                 ],
               ),
               const SizedBox(

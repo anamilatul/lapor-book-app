@@ -149,7 +149,7 @@ class AddFormState extends State<AddFormPage> {
         'tanggal': timestamp,
         'maps': maps,
         'likes': 0,
-        'likedBy': "",
+        'likedBy': [],
       }).catchError((e) {
         throw e;
       });

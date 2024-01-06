@@ -37,6 +37,30 @@ class _ListItemState extends State<ListItem> {
     }
   }
 
+  int _likeCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchLikeCount();
+  }
+
+  Future<void> _fetchLikeCount() async {
+    try {
+      final docSnapshot = await _firestore
+          .collection('laporan')
+          .doc(widget.laporan.docId)
+          .get();
+      final likes = docSnapshot.data()?['likes'] ?? 0;
+
+      setState(() {
+        _likeCount = likes;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -152,8 +176,11 @@ class _ListItemState extends State<ListItem> {
                     //   ),
                     // ),
                     child: Text(
-                      "${widget.laporan.likes}",
-                      style: TextStyle(fontSize: 8),
+                      'Likes: $_likeCount',
+                      style: headerStyle(
+                        level: 5,
+                        dark: false,
+                      ),
                     ),
                   ),
                 ),
